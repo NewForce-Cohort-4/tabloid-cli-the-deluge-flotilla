@@ -17,7 +17,7 @@ namespace TabloidCLI
                 conn.Open();
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT Id,
+                    cmd.CommandText = @"SELECT id,
                                                FirstName,
                                                LastName,
                                                Bio
