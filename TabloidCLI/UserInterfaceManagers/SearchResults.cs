@@ -33,5 +33,16 @@ namespace TabloidCLI.UserInterfaceManagers
 
             Console.WriteLine();
         }
+
+        public void SearchAllDisplay()
+        {
+
+            foreach (T result in _results)
+            {
+                Console.WriteLine(" " + result);
+            }
+
+            Console.WriteLine();
+        }
     }
 }
