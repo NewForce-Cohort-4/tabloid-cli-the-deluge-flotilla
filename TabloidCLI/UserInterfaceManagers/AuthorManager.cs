@@ -6,9 +6,9 @@ namespace TabloidCLI.UserInterfaceManagers
 {
     public class AuthorManager : IUserInterfaceManager
     {
-        private readonly IUserInterfaceManager _parentUI;
-        private AuthorRepository _authorRepository;
-        private string _connectionString;
+        public readonly IUserInterfaceManager _parentUI;
+        public AuthorRepository _authorRepository;
+        public string _connectionString;
 
         public AuthorManager(IUserInterfaceManager parentUI, string connectionString)
         {
@@ -35,7 +35,7 @@ namespace TabloidCLI.UserInterfaceManagers
                     List();
                     return this;
                 case "2":
-                    Author author = Choose();
+                    Author author = ChooseAuthor();
                     if (author == null)
                     {
                         return this;
@@ -61,7 +61,7 @@ namespace TabloidCLI.UserInterfaceManagers
             }
         }
 
-        private void List()
+        public void List()
         {
             List<Author> authors = _authorRepository.GetAll();
             foreach (Author author in authors)
@@ -70,7 +70,7 @@ namespace TabloidCLI.UserInterfaceManagers
             }
         }
 
-        private Author Choose(string prompt = null)
+        public Author ChooseAuthor(string prompt = null)
         {
             if (prompt == null)
             {
@@ -101,7 +101,7 @@ namespace TabloidCLI.UserInterfaceManagers
             }
         }
 
-        private void Add()
+        public void Add()
         {
             Console.WriteLine("New Author");
             Author author = new Author();
@@ -118,9 +118,9 @@ namespace TabloidCLI.UserInterfaceManagers
             _authorRepository.Insert(author);
         }
 
-        private void Edit()
+        public void Edit()
         {
-            Author authorToEdit = Choose("Which author would you like to edit?");
+            Author authorToEdit = ChooseAuthor("Which author would you like to edit?");
             if (authorToEdit == null)
             {
                 return;
@@ -149,9 +149,9 @@ namespace TabloidCLI.UserInterfaceManagers
             _authorRepository.Update(authorToEdit);
         }
 
-        private void Remove()
+        public void Remove()
         {
-            Author authorToDelete = Choose("Which author would you like to remove?");
+            Author authorToDelete = ChooseAuthor("Which author would you like to remove?");
             if (authorToDelete != null)
             {
                 _authorRepository.Delete(authorToDelete.Id);
