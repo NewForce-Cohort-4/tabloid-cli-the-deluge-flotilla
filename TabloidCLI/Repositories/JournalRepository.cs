@@ -96,6 +96,9 @@ namespace TabloidCLI
 
         public void Insert(Journal journalEntry)
         {
+            DateTime myDateTime = DateTime.Now;
+            string sqlFormattedDate = myDateTime.ToString("yyyy-MM-dd HH:mm:ss.fff");
+
             using (SqlConnection conn = Connection)
             {
                 conn.Open();
@@ -105,7 +108,7 @@ namespace TabloidCLI
                                                      VALUES (@title, @content, @createDateTime)";
                     cmd.Parameters.AddWithValue("@title", journalEntry.Title);
                     cmd.Parameters.AddWithValue("@content", journalEntry.Content);
-                    _ = cmd.Parameters.AddWithValue("@createDateTime", SqlDbType.DateTime2);
+                    _ = cmd.Parameters.AddWithValue("@createDateTime", sqlFormattedDate);
 
                     cmd.ExecuteNonQuery();
                 }
