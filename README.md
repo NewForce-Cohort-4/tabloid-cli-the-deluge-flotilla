@@ -4,7 +4,7 @@ Tablod CLI is a C# console application for saving information about your favorit
 ## Description
 Tabloid CLI features:
     
-    - Main Menu: The mian menu allows you top navigate through the application.
+    - Main Menu: The main menu allows you to navigate through the application.
 ![TabloidCLI-Main-Menu](https://user-images.githubusercontent.com/70034359/117683101-bb86c000-b181-11eb-91bc-5dcfbf26d55c.png)
 
 
@@ -26,6 +26,6 @@ Tabloid CLI features:
     - Search By Tag: Allows you to search for blogs, authors, posts, or all of them at once via tag name. 
 ![TabloidCLI-Search-Menu](https://user-images.githubusercontent.com/70034359/117683732-5bdce480-b182-11eb-8513-10d728a6689a.png)
 
-    - Options Menu: Allows you to changee the background and foreground color of console.
+    - Options Menu: Allows you to change the background and foreground color of console.
 ![TabloidCLI-Options-Menu](https://user-images.githubusercontent.com/70034359/117683882-7c0ca380-b182-11eb-8ca5-a2902afd14e6.png)
 
