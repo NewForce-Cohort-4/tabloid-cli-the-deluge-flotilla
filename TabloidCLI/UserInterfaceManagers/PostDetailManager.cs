@@ -22,6 +22,8 @@ namespace TabloidCLI.UserInterfaceManagers
             _postId = postId;
         }
 
+        private const string CONNECTION_STRING = @"Data Source=localhost\SQLEXPRESS;Database=TabloidCLI;Integrated Security=True";
+
         public IUserInterfaceManager Execute()
         {
             Post post = _postRepository.Get(_postId);
@@ -29,6 +31,7 @@ namespace TabloidCLI.UserInterfaceManagers
             Console.WriteLine(" 1) View");
             Console.WriteLine(" 2) Add Tag");
             Console.WriteLine(" 3) Remove Tag");
+            Console.WriteLine(" 4) Manage Notes");
             Console.WriteLine(" 0) Go Back");
 
             Console.Write("> ");
@@ -44,6 +47,8 @@ namespace TabloidCLI.UserInterfaceManagers
                 case "3":
                     RemoveTag();
                     return this;
+                case "4": 
+                    return new NoteManager(this, CONNECTION_STRING);
                 case "0":
                     return _parentUI;
                 default:
