@@ -99,6 +99,40 @@ namespace TabloidCLI
             }
         }
 
+
+        public List<Post> GetByBlog(int blogId)
+        {
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"SELECT 
+                                            p.Title As PostTitle
+                                        FROM Post p       
+                                        WHERE p.blogId = @BlogId";
+                    cmd.Parameters.AddWithValue("@BlogId", blogId);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    List<Post> posts = new List<Post>();
+                    while (reader.Read())
+                    {
+                        Post post = new Post()
+                        {
+                            
+                            Title = reader.GetString(reader.GetOrdinal("PostTitle")),
+                            
+                            
+                        };
+                        posts.Add(post);
+                    }
+
+                    reader.Close();
+
+                    return posts;
+                }
+            }
+        }
         public List<Post> GetByAuthor(int authorId)
         {
             using (SqlConnection conn = Connection)
